@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Projeto 'Fundo do Mar' — site informativo sobre animais marinhos em extinção. Conscientização, fatos científicos e formas de ajudar." />
+  <title>Marítimos — Animais em Extinção</title>
+<link rel="stylesheet" href="style.css">
+ <!-- Bibliotecas -->
+<script defer src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.8.0/dist/tf.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
+</head>
+<body>
+  <header>
+    <div class="header-inner" role="banner">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">M</div>
+        <div>
+          <div style="font-weight:800">Marítimos</div>
+          <div style="font-size:0.85rem; color:var(--muted)">Projeto - Fundo do Mar</div>
+        </div>
+      </div>
+
+      <nav aria-label="Navegação principal">
+        <a href="#curiosidades">Curiosidades</a>
+        <a href="#fatos">Fatos</a>
+        <a href="#galeria">Galeria</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+
+      <div class="controls" role="region" aria-label="Controles rápidos">
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero" aria-labelledby="heroTitle">
+      <article class="hero-card fade-in" aria-describedby="heroDesc">
+        <h1 id="heroTitle">Animais em Extinção</h1>
+        <div class="slogan">Salve os oceanos, preserve a vida marinha.</div>
+        <p id="heroDesc" class="resume">O site apresenta informações sobre animais marinhos em extinção, mostrando as espécies ameaçadas, causas da perda de habitat e iniciativas de preservação para conscientizar e mobilizar ações.</p>
+
+        <div class="hero-actions" role="group" aria-label="Ações principais">
+          <button id="abrirIA" class="btn" aria-label="Iniciar reconhecimento facial">Reconhecimento Facial</button>
+          <button id="btnAbrirChatbot" class="btn btn-primary" aria-label="Abrir chatbot">Abrir Chatbot</button>
+          <a class="btn" href="#fatos">Ver Fatos</a>
+          <!-- TODO: Alterar link para material de apoio se necessário -->
+        </div>
+
+        <p style="margin-top:12px;color:var(--muted);font-size:0.9rem">
+          Equipe: Cauã Alves Gonçalves Bernardes, Giulia Christine Silva Amorin, Julio Cesar Mariano Liberato de Sousa, Anthony guilherme de souza santos.
+        </p>
+      </article>
+
+      <aside class="hero-visual" aria-hidden="false">
+        <!-- URL_IMAGEM_HERO: TODO: substitua pela imagem desejada caso queira outra -->
+        <img src="https://www.ambientemagazine.com/wp-content/uploads/2015/11/BALEIA2.jpg" alt="Baleia nadando em águas azuis — imagem representativa de animais marinhos em extinção" />
+      </aside>
+    </section>
+
+    <!-- CURIOSIDADES -->
+    <section id="curiosidades" aria-labelledby="curioTitle">
+      <h2 id="curioTitle">Curiosidades</h2>
+      <div class="curiosidades" role="list">
+        <article class="curio" role="listitem">
+          <div class="ic" aria-hidden="true">1</div>
+          <p>A vaquita é o mamífero marinho mais ameaçado do mundo — restam menos de 10.</p>
+        </article>
+
+        <article class="curio" role="listitem">
+          <div class="ic" aria-hidden="true">2</div>
+          <p>O peixe-boi-marinho ajuda a manter os ecossistemas aquáticos saudáveis.</p>
+        </article>
+
+        <article class="curio" role="listitem">
+          <div class="ic" aria-hidden="true">3</div>
+          <p>As tartarugas-de-couro são as maiores tartarugas do planeta.</p>
+        </article>
+
+        <article class="curio" role="listitem">
+          <div class="ic" aria-hidden="true">4</div>
+          <p>O tubarão-baleia é o maior peixe do mundo, mas é inofensivo ao ser humano.</p>
+        </article>
+
+        <article class="curio" role="listitem">
+          <div class="ic" aria-hidden="true">5</div>
+          <p>Os corais abrigam milhares de espécies marinhas, mas estão morrendo com o aquecimento dos oceanos.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- FATOS / CIÊNCIA -->
+    <section id="fatos" aria-labelledby="fatosTitle">
+      <h2 id="fatosTitle">Fatos e Ciência</h2>
+      <div class="fatos">
+        <article class="card" aria-labelledby="f1">
+          <h3 id="f1">Ação humana é a principal causa</h3>
+          <p>Atividades como destruição de habitat, caça ilegal, poluição e mudanças climáticas são responsáveis pela maioria das ameaças às espécies marinhas.</p>
+        </article>
+
+        <article class="card" aria-labelledby="f2">
+          <h3 id="f2">Perda de habitat</h3>
+          <p>Destruição de áreas costeiras, poluição e dragagem reduzem os locais onde espécies se alimentam e se reproduzem.</p>
+        </article>
+
+        <article class="card" aria-labelledby="f3">
+          <h3 id="f3">Impacto das mudanças climáticas</h3>
+          <p>A elevação da temperatura e acidificação dos oceanos afetam reprodução, distribuição e disponibilidade de alimento para muitas espécies.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- GALERIA -->
+    <section id="galeria" aria-labelledby="galTitle">
+      <h2 id="galTitle">Galeria</h2>
+      <div class="galeria" role="list">
+        <figure class="gal-item" role="listitem">
+          <img src="https://campos24horas.com.br/portal/wp-content/uploads/2020/10/arraia-2.jpg" alt="Arraia nadando" />
+          <figcaption>Arraia — imagem representativa.</figcaption>
+        </figure>
+
+        <figure class="gal-item" role="listitem">
+          <img src="https://s2-umsoplaneta.glbimg.com/AB5_4RM7g0FnsXan7dpX1pCOnfc=/0x0:800x600/924x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_7d5b9b5029304d27b7ef8a7f28b4d70f/internal_photos/bs/2021/K/Q/cS7GsCTMiT5LUEBFTReg/cavalo-marinho.jpg" alt="Cavalo-marinho próximo a plantas aquáticas" />
+          <figcaption>Cavalo-marinho — paisagens de recife.</figcaption>
+        </figure>
+
+        <figure class="gal-item" role="listitem">
+          <img src="https://conexaoplaneta.com.br/wp-content/uploads/2017/04/peixe-boi-nao-esta-mais-em-risco-extincao-foto-extrabrandt-pixabay-800.jpg" alt="Peixe-boi repousando na costa" />
+          <figcaption>Peixe-boi — conservação e recuperação.</figcaption>
+        </figure>
+
+        <figure class="gal-item" role="listitem">
+          <img src="https://marsemfim.com.br/wp-content/uploads/2017/11/tubarao-martelo-extincao.jpg" alt="Tubarão-martelo nadando" />
+          <figcaption>Tubarão-martelo — espécies ameaçadas por pesca.</figcaption>
+        </figure>
+
+        <figure class="gal-item" role="listitem">
+          <img src="https://www.fatosdesconhecidos.com.br/wp-content/uploads/2020/03/8-106.jpg" alt="Tartaruga marinha na superfície" />
+          <figcaption>Tartaruga marinha — migradora e ameaçada.</figcaption>
+        </figure>
+
+        <figure class="gal-item" role="listitem">
+          <img src="https://cdn0.peritoanimal.com.br/pt/posts/7/9/3/os_7_animais_marinhos_mais_raros_do_mundo_21397_600.jpg" alt="Conjunto de espécies marinhas raras" />
+          <figcaption>Espécies raras — diversidade marinha.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" aria-labelledby="faqTitle">
+      <h2 id="faqTitle">Perguntas Frequentes</h2>
+
+      <div class="faq">
+        <details>
+          <summary>O que significa um animal estar em extinção?</summary>
+          <p>Significa que ele corre risco de desaparecer da natureza se nada for feito para protegê-lo.</p>
+        </details>
+
+        <details>
+          <summary>Quais são os animais marinhos mais ameaçados?</summary>
+          <p>Baleia-azul, tartaruga-de-couro, tubarão-martelo e vaquita estão entre os mais ameaçados.</p>
+        </details>
+
+        <details>
+          <summary>Por que os animais marinhos estão em extinção?</summary>
+          <p>Principalmente por poluição, pesca excessiva, destruição dos habitats e mudanças climáticas.</p>
+        </details>
+
+        <details>
+          <summary>O plástico afeta os animais marinhos?</summary>
+          <p>Sim — muitas espécies confundem plástico com alimento ou ficam enredadas, o que pode levar à morte.</p>
+        </details>
+
+        <details>
+          <summary>Como posso ajudar a proteger os animais marinhos?</summary>
+          <p>Reduza o uso de plástico, prefira peixes de pesca sustentável e apoie iniciativas de conservação.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section aria-label="Call to action" class="cta" role="region">
+      <div>
+        <strong>Quer aprender mais?</strong>
+        <div style="color:var(--muted)">Leia nossos cards, compartilhe e baixe materiais educativos.</div>
+      </div>
+      <div style="display:flex;gap:8px;">
+        <a class="btn" href="#galeria">Aprender mais</a>
+        <a class="btn btn-primary" href="#faq">Baixar material</a>
+      </div>
+    </section>
+
+    <!-- FONTES / CRÉDITOS -->
+    <section aria-label="Créditos e fontes">
+      <h3>Créditos / Fontes</h3>
+      <ul>
+        <!-- TODO: Atualizar com fontes específicas caso tenha artigos ou pesquisas usadas -->
+        <li>Imagens e materiais fornecidos pelo grupo — links usados na galeria e no projeto (ver URLs abaixo).</li>
+        <li>Links de imagens utilizadas:
+          <ul>
+            <li>https://campos24horas.com.br/portal/wp-content/uploads/2020/10/arraia-2.jpg</li>
+            <li>https://s2-umsoplaneta.glbimg.com/AB5_4RM7g0FnsXan7dpX1pCOnfc=/.../cavalo-marinho.jpg</li>
+            <li>https://conexaoplaneta.com.br/wp-content/uploads/2017/04/peixe-boi-...jpg</li>
+            <li>https://marsemfim.com.br/wp-content/uploads/2017/11/tubarao-martelo-extincao.jpg</li>
+            <li>https://www.fatosdesconhecidos.com.br/wp-content/uploads/2020/03/8-106.jpg</li>
+            <li>https://cdn0.peritoanimal.com.br/pt/posts/7/9/3/os_7_animais_marinhos_mais_raros_do_mundo_21397_600.jpg</li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+  </main>
+
+  <!-- Chatbot aside (off-canvas panel) -->
+    <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+
+    <df-messenger
+      intent="WELCOME"
+      chat-title="Chatbot-IA"
+      agent-id="7e9ea28d-fc2a-4f18-a435-1d31267d9a34"
+      language-code="pt-br">
+    </df-messenger>
+
+  <footer role="contentinfo">
+    <div>© <span id="year"></span> Projeto Fundo do Mar — Equipe Marítimos</div>
+    <div>
+      <a class="top-link" href="#heroTitle">Voltar ao topo</a>
+    </div>
+  </footer>
+
+  <!-- MODAL DE RECONHECIMENTO FACIAL -->
+<div id="cameraModal" class="modal-camera" aria-hidden="true">
+  <div class="modal-camera-content">
+
+    <button id="fecharModal" class="modal-camera-close" title="Fechar">❌</button>
+
+    <h2 class="modal-camera-title">Reconhecimento Facial</h2>
+
+    <div class="modal-video-wrap">
+      <video id="video" autoplay muted playsinline></video>
+    </div>
+
+    <div class="modal-camera-controls">
+      <button id="tirarFoto" class="modal-camera-btn" title="Tirar foto">📸 Tirar Foto</button>
+    </div>
+
+    <p id="modalStatus" class="modal-camera-status">Aguardando...</p>
+
+    <canvas id="fotoCanvas" style="display:none;"></canvas>
+
+  </div>
+</div>
+
+  <!-- SCRIPT: TODO: copie o conteúdo desta seção para um arquivo script.js se desejar separar -->
+ <script src="script.js" defer></script>
+</body>
+</html>

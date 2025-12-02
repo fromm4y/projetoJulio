@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Resultado - Exploração do Oceano</title>
+
+  <style>
+    /* ============================================
+       VARIÁVEIS GERAIS (MESMAS DO SEU INDEX)
+    ============================================ */
+    :root{
+      --bg:#f3fbff;
+      --card:#ffffff;
+      --text:#073642;
+      --muted:#556b73;
+      --accent:#087ea4;
+      --accent-2:#00a3cc;
+      --glass: rgba(255,255,255,0.6);
+      --shadow: 0 6px 18px rgba(3, 40, 60, 0.08);
+      --radius: 16px;
+      --transition: .28s ease;
+    }
+
+    .dark {
+      --bg:#021823;
+      --card:#06262d;
+      --text:#e6f6fb;
+      --muted:#9fbfc9;
+      --accent:#2bb6dd;
+      --accent-2:#16a0c7;
+      --glass: rgba(0,0,0,0.35);
+      --shadow: 0 8px 24px rgba(0,0,0,0.5);
+    }
+
+    /* ============================================
+       ESTILO DA PÁGINA DE RESULTADO
+    ============================================ */
+    body {
+      margin:0;
+      padding:40px 18px;
+      background: linear-gradient(180deg,var(--bg), #e6f9ff 60%);
+      font-family: system-ui, Arial, sans-serif;
+      color: var(--text);
+      text-align: center;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.4;
+    }
+
+    h1 {
+      margin-bottom: 6px;
+      font-size: 2rem;
+      animation: fadeIn .6s ease both;
+    }
+
+    h2 {
+      margin-top: 0;
+      font-size: 1.7rem;
+      color: var(--accent);
+      font-weight: 700;
+      animation: fadeIn .8s ease both;
+    }
+
+    p {
+      font-size: 1.1rem;
+      margin-bottom: 22px;
+      color: var(--muted);
+      animation: fadeIn 1s ease both;
+    }
+
+    /* CARD PRINCIPAL */
+    .card {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      background: var(--card);
+      padding: 24px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(4px);
+      max-width: 420px;
+      margin: 0 auto;
+      animation: fadeIn 1.2s ease both;
+    }
+
+    .card img {
+      width: 100%;
+      max-width: 360px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    button {
+      padding: 12px 22px;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 1rem;
+      color: white;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      box-shadow: var(--shadow);
+      transition: transform .2s ease;
+    }
+
+    button:hover {
+      transform: translateY(-4px);
+    }
+
+    /* Animação padrão */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+
+<body>
+  <h1>🌊 Emoção detectada:</h1>
+  <h2 id="emocaoTitle">Processando...</h2>
+  <p id="confTitle"></p>
+
+  <div class="card fade-in">
+    <img id="imagemEmocao" alt="Imagem relacionada à emoção" />
+    <button onclick="voltar()">Voltar</button>
+  </div>
+
+  <script>
+    const imagensPorEmocao = {
+      feliz: [
+      'static/mar_feliz/1.png', 
+      'static/mar_feliz/2.png',
+      'static/mar_feliz/3.png',
+      'static/mar_feliz/4.png',
+      'static/mar_feliz/5.png',
+      'static/mar_feliz/6.png',
+      'static/mar_feliz/7.png',
+      'static/mar_feliz/8.png',
+      'static/mar_feliz/9.png',
+      'static/mar_feliz/10.png',
+      'static/mar_feliz/11.png', 
+      'static/mar_feliz/12.png',
+      'static/mar_feliz/13.png',
+      'static/mar_feliz/14.png',
+      'static/mar_feliz/15.png',
+      'static/mar_feliz/16.png',
+      'static/mar_feliz/17.png',
+      'static/mar_feliz/18.png',
+      'static/mar_feliz/19.png',
+      'static/mar_feliz/20.png'
+    ],
+
+      triste: [
+
+      'static/mar_triste/1.png', 
+      'static/mar_triste/2.png',
+      'static/mar_triste/3.png',
+      'static/mar_triste/4.png',
+      'static/mar_triste/5.png',
+      'static/mar_triste/6.png',
+      'static/mar_triste/7.png',
+      'static/mar_triste/8.png',
+      'static/mar_triste/9.png',
+      'static/mar_triste/10.png',
+      'static/mar_triste/11.png', 
+      'static/mar_triste/12.png',
+      'static/mar_triste/13.png',
+      'static/mar_triste/14.png',
+      'static/mar_triste/15.png',
+      'static/mar_triste/16.png',
+      'static/mar_triste/17.png',
+      'static/mar_triste/18.png',
+      'static/mar_triste/19.png',
+      'static/mar_triste/20.png',
+      'static/mar_triste/21.png',
+    ],
+
+      neutro: [
+
+      'static/mar_neutro/1.png', 
+      'static/mar_neutro/2.png',
+      'static/mar_neutro/3.png',
+      'static/mar_neutro/4.png',
+      'static/mar_neutro/5.png',
+      'static/mar_neutro/6.png',
+      'static/mar_neutro/7.png',
+      'static/mar_neutro/8.png',
+      'static/mar_neutro/9.png',
+      'static/mar_neutro/10.png',
+      'static/mar_neutro/11.png', 
+      'static/mar_neutro/12.png',
+      'static/mar_neutro/13.png',
+      'static/mar_neutro/14.png',
+      'static/mar_neutro/15.png',
+      'static/mar_neutro/16.png',
+      'static/mar_neutro/17.png',
+      'static/mar_neutro/18.png',
+      'static/mar_neutro/19.png',
+      'static/mar_neutro/20.png',
+    ]
+    };
+
+    const traducoes = {
+      happy: 'feliz',
+      sad: 'triste',
+      neutral: 'neutro',
+      angry: 'triste',
+      fearful: 'triste',
+      disgusted: 'triste',
+      surprised: 'feliz'
+    };
+
+    function getQueryParam(name) {
+      const params = new URLSearchParams(window.location.search);
+      return params.get(name);
+    }
+
+    function imagemAleatoria(lista) {
+      return lista[Math.floor(Math.random() * lista.length)];
+    }
+
+    const emocaoOriginal = getQueryParam('emocao') || 'neutral';
+    const conf = getQueryParam('conf') || '0';
+    const emocaoTraduzida = traducoes[emocaoOriginal] || 'nenhuma';
+
+    document.getElementById('emocaoTitle').innerText =
+      emocaoTraduzida.charAt(0).toUpperCase() + emocaoTraduzida.slice(1);
+
+    document.getElementById('confTitle').innerText = `Confiança: ${conf}%`;
+
+    if (imagensPorEmocao[emocaoTraduzida] && imagensPorEmocao[emocaoTraduzida].length > 0) {
+      document.getElementById('imagemEmocao').src =
+        imagemAleatoria(imagensPorEmocao[emocaoTraduzida]);
+    } else {
+      document.getElementById('imagemEmocao').style.display = 'none';
+    }
+
+    function voltar() {
+      window.location.href = 'index.html';
+    }
+  </script>
+</body>
+</html>
